@@ -2,7 +2,7 @@
 
 from typing import Final
 
-from homeassistant.backports.enum import StrEnum
+import enum
 
 DOMAIN: Final = "bemfa"
 
@@ -33,7 +33,7 @@ OPTIONS_SWING_VERTICAL_VALUE: Final = "swing_vertical_value"
 OPTIONS_SWING_BOTH_VALUE: Final = "swing_both_value"
 
 # #### MQTT ####
-class TopicSuffix(StrEnum):
+class TopicSuffix(enum.StrEnum):
     """Suffix for bemfa MQTT topic"""
 
     LIGHT = "002"
@@ -60,8 +60,8 @@ MSG_PAUSE: Final = "pause"  # for covers
 MSG_SPEED_COUNT: Final = 4  # for fans, 4 speed supported at most
 
 # #### Service Api ####
-HTTP_BASE_URL: Final = f"https://api.{MQTT_HOST}/api/"
-FETCH_TOPICS_URL: Final = "https://api.bemfa.com/api/device/v1/topic/?uid={uid}&type=2"
-CREATE_TOPIC_URL: Final = f"{HTTP_BASE_URL}user/addtopic/"
-RENAME_TOPIC_URL: Final = f"{HTTP_BASE_URL}device/v1/topic/name/"
-DEL_TOPIC_URL: Final = f"{HTTP_BASE_URL}user/deltopic/"
+HTTP_BASE_URL: Final = f"https://pro.{MQTT_HOST}/v1"
+FETCH_TOPICS_URL: Final = "https://apis.bemfa.com/va/alltopic?uid={uid}&type=1"
+CREATE_TOPIC_URL: Final = f"{HTTP_BASE_URL}/addtopic"
+RENAME_TOPIC_URL: Final = f"https://apis.bemfa.com/va/setName"
+DEL_TOPIC_URL: Final = f"{HTTP_BASE_URL}/deltopic"
